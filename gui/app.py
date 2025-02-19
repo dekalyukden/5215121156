@@ -13,20 +13,20 @@ def run_app():
 
     log_message("Захоплення зображення з екрану")
     image = np.array(pyautogui.screenshot())
-    image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-    image_copy = image.copy()
+    image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)  # Конвертує зображення з формату RGB у формат BGR
+    image_copy = image.copy()  # Створює копію зображення
 
     x_start, y_start, x_end, y_end = None, None, None, None
     cropping = False
 
     # Створення вікна tkinter
     root = tk.Tk()
-    root.title("Програма виділення області")
+    root.title("Програма виділення області")  # Встановлює назву вікна
     root.geometry("300x300")
 
     selected_key = load_key()
 
-    choose_key_button = ttk.Button(root, text="Вибрати клавішу", command=lambda: choose_key(key_label))
+    choose_key_button = ttk.Button(root, text="Призначити кнопку", command=lambda: choose_key(key_label))  # Зміна тексту кнопки
     choose_key_button.pack(pady=10)
 
     key_label = ttk.Label(root, text=f"Обрана клавіша: {selected_key if selected_key else 'Не обрано'}")
