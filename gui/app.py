@@ -8,6 +8,13 @@ from utils.key_handler import choose_key, load_key
 from utils.image_processor import select_region
 from utils.logger import log_message
 
+def center_window(root, width=300, height=300):
+    screen_width = root.winfo_screenwidth()
+    screen_height = root.winfo_screenheight()
+    x = (screen_width - width) // 2
+    y = (screen_height - height) // 2
+    root.geometry(f"{width}x{height}+{x}+{y}")
+
 def run_app():
     global selected_key, x_start, y_start, x_end, y_end, cropping, image, image_copy
 
@@ -22,7 +29,7 @@ def run_app():
     # Створення вікна tkinter
     root = tk.Tk()
     root.title("Програма виділення області")  # Встановлює назву вікна
-    root.geometry("300x300")
+    center_window(root)  # Відкриває вікно по центру екрану
 
     selected_key = load_key()
 
