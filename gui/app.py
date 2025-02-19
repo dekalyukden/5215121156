@@ -51,8 +51,10 @@ def run_app():
         log_message("Створено вікно для відображення зображення")
 
         while True:
+            cv2.imshow("Screen", image_copy)
             key = keyboard.read_event()
             if key and key.event_type == keyboard.KEY_DOWN and key.name == selected_key:
+                cv2.destroyAllWindows()
                 break
             if key and key.event_type == keyboard.KEY_DOWN and key.name == 'q':
                 cv2.destroyAllWindows()
